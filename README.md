@@ -23,9 +23,9 @@ CREATE TABLE data_penjualan (
 SELECT * FROM data_penjualan;
 
 INSERT INTO data_penjualan (Transaction_ID, Date, Product_Name, Category, Price, Quantity, Customer_Type)
-VALUES 	('TRX001', '2026-01-15', 'Laptop Asus', 'Electronics', 8000000, 2, 'Member'),
-    		('TRX002', '2026-01-16', 'Smart TV', 'Electronics', 4500000, 1, 'Standard'),
-        ('TRX003', '2026-01-17', 'Kemeja Flanel', 'Apparel', 250000, 3, 'Member'),
+VALUES 		('TRX001', '2026-01-15', 'Laptop Asus', 'Electronics', 8000000, 2, 'Member'),
+			('TRX002', '2026-01-16', 'Smart TV', 'Electronics', 4500000, 1, 'Standard'),
+        	('TRX003', '2026-01-17', 'Kemeja Flanel', 'Apparel', 250000, 3, 'Member'),
     		('TRX004', '2026-01-18', 'Rice Cooker', 'Home Appliances', 600000, 1, 'Standard'),
     		('TRX005', '2026-01-19', 'Smartphone', 'Electronics', 5000000, 4, 'Member'),
     		('TRX006', '2026-01-20', 'Blender', 'Home Appliances', 400000, 2, 'Standard'),
@@ -55,7 +55,7 @@ Kasus 2: Analisis Performa Kategori Produk (Agregasi).
 Tujuan: Meringkas total kuantitas terjual dan total omset dari setiap kelompok kategori.
 ```SQL
 select
-	  Category,
+	Category,
     SUM(Quantity) AS Total_Qty_Sold,
     SUM(Price * Quantity) AS Total_Revenue
 from data_penjualan
@@ -68,7 +68,7 @@ Kasus 3: Menyaring Kelompok Data yang Mencapai Target (Filtering Aggregation).
 Tujuan: Menyaring kategori yang berhasil melewati target pendapatan di atas Rp2.000.000 menggunakan klausul HAVING.
 ```SQL
 select
-	  Category,
+	Category,
     SUM(Quantity) AS Total_Qty_Sold,
     SUM(Price * Quantity) AS Total_Revenue
 From data_penjualan
@@ -82,7 +82,7 @@ Kasus 4: Analisis Perilaku Belanja Tipe Pelanggan (Customer Segmentation).
 Tujuan: Menganalisis segmen pelanggan yang memberikan kontribusi finansial terbesar serta melihat karakteristik rata-rata harga produk yang mereka minati.
 ```SQL
 SELECT
-	  Customer_Type,
+	Customer_Type,
     SUM(Price * Quantity) AS Total_Revenue,
     AVG(Price) AS Average_Product_Price
 from data_penjualan
